@@ -5,7 +5,7 @@ try {
         Add-Type -AssemblyName 'system.windows.forms'
         Add-Type -AssemblyName 'system.drawing'
         [System.Windows.Forms.Application]::EnableVisualStyles()
-        $pathDir = $MyInvocation.MyCommand.Path | Split-Path -Parent
+        $pathDir = $PSScriptRoot
         
         if(test-path $pathDir){
             Write-Host -ForegroundColor Yellow  'Loading Config file - ' -NoNewline
@@ -34,10 +34,6 @@ try {
 }
 catch {
     Write-Host -ForegroundColor Red -Object 'ERROR'
-    write-host -ForegroundColor red "Error while loading: $_. Check if config.ps1, Form.ps1, Events.ps1, Functions.ps1 exist in the same folder as $pathdir"
+    write-host -ForegroundColor red "Error while loading: $_. Check if config.ps1, Form.ps1, Events.ps1, Functions.ps1 exist in $PSScriptRoot (PSScriptRoot)"
     Pause
 }
-
-
-
-
