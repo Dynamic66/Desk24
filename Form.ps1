@@ -184,40 +184,43 @@ $bAICall.FlatAppearance.BorderSize = 1
 
 $pAIControls = [System.Windows.Forms.panel]::new()
 $pAIControls.dock = 'bottom'
-$pAIControls.Controls.AddRange($bAICall,$bInvokeAI)
 $pAIControls.Size = "30,30"
 
 
 # structuring objects
 
-$pTopControls.Controls.AddRange(
+$gKeyInfo.Controls.Add($tKeyInfo)
+
+$pAIControls.Controls.AddRange(@(
+	$bAICall,
+	$bInvokeAI
+))
+
+$pTopControls.Controls.AddRange(@(
     $cPin,
     $bConfig,
     $bExit
-)
+))
 
-$gKeyInfo.Controls.Add($tKeyInfo)
-
-$gNotes.Controls.AddRange(
+$gNotes.Controls.AddRange(@(
     $tSizer,
     $rText,
     $bSave
-)
+))
 
-$gAI.Controls.AddRange(
+$gAI.Controls.AddRange(@(
     $tPrompt,
     $pAIControls
-)
+))
 
-$pMid.Controls.AddRange(
+$pMid.Controls.AddRange(@(
     $gNotes, 
     $gKeyInfo,
     $gAI
-)
+))
 
-
-$fDesk.Controls.AddRange($pMid,
+$fDesk.Controls.AddRange(@(
+    $pMid,
     $pTopControls,
     $pBottomControls
-)
-
+))
