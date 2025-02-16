@@ -5,8 +5,8 @@ try {
         Add-Type -AssemblyName 'system.windows.forms'
         Add-Type -AssemblyName 'system.drawing'
         [System.Windows.Forms.Application]::EnableVisualStyles()
-        $pathDir = $MyInvocation.PSScriptRoot
-
+        $pathDir = $MyInvocation.MyCommand.Path | Split-Path -Parent
+        
         if(test-path $pathDir){
             Write-Host -ForegroundColor Yellow  'Loading Config file - ' -NoNewline
             . "$pathDir\Config.ps1"
