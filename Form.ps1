@@ -188,7 +188,7 @@ $pAIControls.Controls.AddRange($bAICall,$bInvokeAI)
 $pAIControls.Size = "30,30"
 
 
-structuring of objects
+# structuring objects
 
 $pTopControls.Controls.AddRange(
     $cPin,
