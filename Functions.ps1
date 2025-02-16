@@ -4,21 +4,21 @@ Function Set-FormVisibility {
         [boolean]$Visible
     )
     If ($visible) {
-        #Write-Verbose -Message 'Show-Form' -Verbose
         $fDesk.Opacity = 0.95
         $fDesk.TopMost = $true
         $fDesk.TopMost = $false
-        #$timerCheckFocus.Enabled = $true################
     }
     Else {
-        #Write-Verbose -Message 'Hide-Form' -Verbose
         $fDesk.TopMost = $false
         $fDesk.Opacity = 0
-        #$timerCheckFocus.Enabled = $false########################
     }
 }
 
 function Load-Shortcuts {
+
+    if (-not (Test-Path $pathShortcuts)) {
+        New-Item $pathShortcuts -ItemType Directory -Force
+    }
 
     $pBottomControls.Controls.Clear()
 
@@ -60,16 +60,16 @@ function Get-OllamaResponse {
         [string]$API = 'http://localhost:11434/api/generate'
 
     )
-        
+    
     if ($Prompt) {
-        $request = "{
-            `"model`": `"$Model`",
-            `"options`": {
-                `"seed`": $seed,
-                `"temperature`": $Temperature
-            },
-            `"prompt`": `"$prompt`"
-        }"
+        $request = @{ 
+            model   = $Model
+            options = {
+                seed=$seed
+                temperature=$Temperature
+            }
+            prompt  = $prompt
+        } | ConvertTo-Json
 
         $output = curl $api -d $request | ConvertFrom-Json -AsHashtable
         
