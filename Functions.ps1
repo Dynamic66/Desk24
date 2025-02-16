@@ -56,7 +56,6 @@ function Get-OllamaResponse {
         [parameter(ParameterSetName = 'Json')]
         [string]$Json,
         [switch]$responseOnly,
-        [switch]$asJob,
         [string]$API = 'http://localhost:11434/api/generate'
 
     )
