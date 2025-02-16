@@ -2,7 +2,11 @@
 $fDesk.add_shown({
         Load-Shortcuts
         Set-FormVisibility -Visible $true
-        $rText.LoadFile($pathNotes) 
+        try{
+            $rText.LoadFile($pathNotes) 
+        }catch{
+            Write-Warning $_ -Verbose
+        }
     })
 
 $fDesk.add_closed({
@@ -36,6 +40,7 @@ KeyData: $($event.KeyData)"
     })
 
 $bAddShortcut.add_click({
+
         $fileDialog = [System.Windows.Forms.OpenFileDialog]::new()
         if ($fileDialog.ShowDialog() -eq 'OK') {
 
