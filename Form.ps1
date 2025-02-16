@@ -96,7 +96,7 @@ $tKeyInfo.ReadOnly = $true
 $tKeyInfo.BorderStyle = 'None'
 
 $tSizer.Orientation = 'Horizontal'
-$tSizer.TickStyle = 'None'
+$tSizer.TickStyle = 'Both'
 $tSizer.Dock = 'Top'
 $tSizer.Minimum = 45
 $tSizer.Maximum = 100
@@ -157,6 +157,7 @@ $rText.BackColor = $Color3
 $rText.ForeColor = $ForeColor
 $rText.BorderStyle = 'None'
 $rText.ContextMenuStrip = $cRTextMenue
+$rText.TabIndex = 0
 
 $bSave.text = 'Save'
 $bSave.BackColor = $Color3
@@ -203,8 +204,8 @@ $pTopControls.Controls.AddRange(@(
 ))
 
 $gNotes.Controls.AddRange(@(
-    $tSizer,
     $rText,
+    $tSizer,
     $bSave
 ))
 
