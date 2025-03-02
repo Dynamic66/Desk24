@@ -113,6 +113,7 @@ $cPin.Appearance = 'button'
 $cPin.FlatStyle = 'Flat'
 $cPin.FlatAppearance.BorderSize = 1
 $cPin.Size = "30,30"
+$cPin.Font = [System.Drawing.Font]::("Segoe UI Emoji", 7)
 $cPin.Text = "📌"
 
 
